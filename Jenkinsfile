@@ -1,20 +1,19 @@
-pipeline {
+    pipeline {
     agent any
+
+    tools {
+        git 'Default Git' // Use the name given in the Git configuration
+    }
 
     environment {
         GIT_REPO_URL = 'https://github.com/Dharmendra-Chourasiya/Java-based-project.git'
-        GIT_CREDENTIALS_ID = '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'
-        GIT_EXECUTABLE = '/usr/bin/git' // The path determined earlier
-    }
-
-    tools {
-        git "${GIT_EXECUTABLE}"
+        GIT_CREDENTIALS_ID = 'github-cicd'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: "${GIT_REPO_URL}", credentialsId: "${GIT_CREDENTIALS_ID}"
+                git branch: 'main', url: "${https://github.com/Dharmendra-Chourasiya/Java-based-project.git}", credentialsId: "${gitgub-cicd}"
             }
         }
 
@@ -46,3 +45,7 @@ pipeline {
         }
     }
 }
+    
+
+   
+  
